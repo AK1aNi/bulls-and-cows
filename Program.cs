@@ -29,7 +29,6 @@ namespace bulls_and_cows
                         }
                     }
                 }
-
             }
             int bulls = 0;
             int cows = 0;
@@ -37,12 +36,22 @@ namespace bulls_and_cows
             int user_num = 0;
             string user_str = "";
             int guesses = 0;
+            bool leave_choice = false;
 
             while (bulls != 4)
             {
-
+                choice2 = false;
                 while (choice2 != true)
                 {
+                    if (guesses ==5 || guesses == 10 || guesses == 15)
+                    {
+                        Console.WriteLine("Do you want the answer [true/false] : ");
+                        leave_choice = Convert.ToBoolean(Console.ReadLine());
+                        if (leave_choice == true)
+                        {
+                            break;
+                        }
+                    }
                     choice2 = true;
                     Console.WriteLine("Guess a 4 digit number to match the random 4 digit number generated");
                     Console.WriteLine("The digits should not repeat" +
@@ -74,13 +83,13 @@ namespace bulls_and_cows
 
                         }
                     }
-
-
-
+                }
+                if (leave_choice==true)
+                {
+                    break;
                 }
                 bulls = 0;
                 cows = 0;
-               
                 for (int i = 0; i <= 3; i++)
                 {
                     for (int j = 0; j <= 3; j++)
@@ -100,19 +109,19 @@ namespace bulls_and_cows
                             }
                         }
                     }
-
-
-
-
                 }
                 Console.WriteLine("Cows: " + cows);
                 Console.WriteLine("Bulls: " + bulls);
                 Console.WriteLine(" ");
                 guesses = guesses + 1;
-                Console.WriteLine(num_str);
-                Console.WriteLine(user_num);
             }
-            Console.WriteLine($"It took you {guesses} guesses to get the right number");
+            if (leave_choice == false)
+            {
+                Console.WriteLine($"It took you {guesses} guesses to get the right number");
+            }
+            Console.WriteLine(" ");
+            Console.WriteLine("The number was"+num_str);
+
         }
     }
 }
