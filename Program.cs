@@ -7,22 +7,23 @@ namespace bulls_and_cows
         static void Main(string[] args)
         {
             string play_opt = "yes";
-
+            List<int> leadearboard = new List<int>();
             while (play_opt != "no")
             {
-                List<int> leadearboard = new List<int>();
+
                 bool choice = false;
                 int nums;
                 string num_str = "";
-
+                Console.WriteLine("How many digits of the number do you want play with: ");
+                int digits = Convert.ToInt32(Console.ReadLine());
                 while (choice != true)
                 {
                     choice = true;
                     Random r = new Random();
                     nums = r.Next(1023, 9876);
-                    for (int i = 0; i <= 3; i++)
+                    for (int i = 0; i < digits; i++)
                     {
-                        for (int j = 0; j <= 3; j++)
+                        for (int j = 0; j < digits; j++)
                         {
                             if (j > i)
                             {
@@ -35,6 +36,7 @@ namespace bulls_and_cows
                         }
                     }
                 }
+                Console.WriteLine(num_str);
                 int bulls = 0;
                 int cows = 0;
                 bool choice2 = false;
@@ -123,22 +125,25 @@ namespace bulls_and_cows
                 }
                 if (leave_choice == false)
                 {
-                    leadearboard.Append(guesses);
+                    leadearboard.Add(guesses);
                     leadearboard.Sort();
+
                     Console.WriteLine($"It took you {guesses} guesses to get the right number");
                     Console.WriteLine(" ");
+
                     Console.WriteLine("Do you want to see your top scores [yes/no]: ");
                     string tpsc_opt = Console.ReadLine().ToLower();
                     if (tpsc_opt == "yes")
                     {
                         foreach (int score in leadearboard)
                         {
-                            Console.WriteLine(leadearboard[score]+". "+score);
+                            Console.WriteLine((leadearboard.IndexOf(score)+1)+". "+score+" guesses");
+                            
                         }
                     }
                 }
                 Console.WriteLine(" ");
-                Console.WriteLine("The number was" + num_str);
+                Console.WriteLine("The number was " + num_str);
                 Console.WriteLine("Do you want to play again: [yes/no]");
                 play_opt = Console.ReadLine().ToLower();
             }
