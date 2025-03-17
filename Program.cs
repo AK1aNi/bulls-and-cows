@@ -121,11 +121,21 @@ namespace bulls_and_cows
                     Console.WriteLine(" ");
                     guesses = guesses + 1;
                 }
-                leadearboard.Append(guesses);
-                leadearboard.Sort();
                 if (leave_choice == false)
                 {
+                    leadearboard.Append(guesses);
+                    leadearboard.Sort();
                     Console.WriteLine($"It took you {guesses} guesses to get the right number");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("Do you want to see your top scores [yes/no]: ");
+                    string tpsc_opt = Console.ReadLine().ToLower();
+                    if (tpsc_opt == "yes")
+                    {
+                        foreach (int score in leadearboard)
+                        {
+                            Console.WriteLine(leadearboard[score]+". "+score);
+                        }
+                    }
                 }
                 Console.WriteLine(" ");
                 Console.WriteLine("The number was" + num_str);
