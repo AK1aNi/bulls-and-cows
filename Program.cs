@@ -13,7 +13,7 @@ namespace bulls_and_cows
             while (play_opt != "no")
             {
                 int digits = 0;
-                bool leave_choice = true;
+                bool leave_choice = false;
                 Console.WriteLine("Welcome to the cows and bulls game!");
                 Console.WriteLine("Choose out of the 4 options: ");
                 Console.WriteLine("");
@@ -26,8 +26,8 @@ namespace bulls_and_cows
                     foreach (int score in leadearboard)
                     {
                         Console.WriteLine((leadearboard.IndexOf(score) + 1) + ". " + score + " guesses");
-                        play_choice = 1;
                     }
+                    play_choice = 1;
                 }
                 if (play_choice == 1)
                 {
@@ -78,27 +78,29 @@ namespace bulls_and_cows
                     min_num = 102345678;
                     max_num = 987654321;
                 }
-                while (choice != true)
-                {
-                    choice = true;
-                    Random r = new Random();
-                    nums = r.Next(min_num, max_num);
-                    for (int i = 0; i < digits; i++)
-                    {
-                        for (int j = 0; j < digits; j++)
-                        {
-                            if (j > i)
-                            {
-                                num_str = Convert.ToString(nums);
-                                if (num_str[i] == num_str[j])
-                                {
-                                    choice = false;
-                                }
-                            }
-                        }
-                    }
-                }
-                Console.WriteLine(num_str);
+                //while (choice != true)
+                //{
+                //    choice = true;
+                //    Random r = new Random();
+                //    nums = r.Next(min_num, max_num);
+                //    for (int i = 0; i < digits; i++)
+                //    {
+                //        for (int j = 0; j < digits; j++)
+                //        {
+                //            if (j > i)
+                //            {
+                //                num_str = Convert.ToString(nums);
+                //                if (num_str[i] == num_str[j])
+                //                {
+                //                    choice = false;
+                //                }
+                //            }
+                //        }
+                //    }
+                //};0
+                nums = 1234;
+                num_str = "1234";
+                //Console.WriteLine(num_str);
                 int bulls = 0;
                 int cows = 0;
                 bool choice2 = false;
@@ -114,7 +116,7 @@ namespace bulls_and_cows
                     {
                         if (guesses == 5 || guesses == 10 || guesses == 15)
                         {
-                            Console.WriteLine("Do you want the answer [0. no/ 1. yes] : ");
+                            Console.WriteLine("Do you want the answer [true/false] : ");
                             leave_choice = Convert.ToBoolean(Console.ReadLine());
                             if (leave_choice == true)
                             {
@@ -152,6 +154,12 @@ namespace bulls_and_cows
                                 }
 
                             }
+                        }
+                        if (choice2==false)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine("Invalid Input, Try again. ");
+                            Console.WriteLine(" ");
                         }
                     }
                     if (leave_choice == true)
