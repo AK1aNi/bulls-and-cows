@@ -14,13 +14,20 @@ namespace bulls_and_cows
             {
                 int digits = 0;
                 bool leave_choice = false;
+                Console.WriteLine(" ");
                 Console.WriteLine("Welcome to the cows and bulls game!");
-                Console.WriteLine("Choose out of the 4 options: ");
-                Console.WriteLine("");
-                Console.WriteLine("1. Play game \r\n\r\n2. Show top score \r\n\r\n3. Quit ");
-                Console.WriteLine("");
-                Console.WriteLine("input: ");
-                int play_choice = Convert.ToInt32(Console.ReadLine());
+                bool play_choice_valid = true;
+                int play_choice = 0;
+                do
+                {
+                    // finsih folproofin menu
+                    Console.WriteLine("Choose out of the 3 options: ");
+                    Console.WriteLine("");
+                    Console.WriteLine("1. Play game \r\n\r\n2. Show top score \r\n\r\n3. Quit ");
+                    Console.WriteLine("");
+                    Console.WriteLine("input: ");
+                    int play_choice = Convert.ToInt32(Console.ReadLine());
+                }while(play_choice_valid != true);
                 if (play_choice == 2)
                 {
                     foreach (int score in leadearboard)
@@ -205,15 +212,15 @@ namespace bulls_and_cows
                     string tpsc_opt = Console.ReadLine().ToLower();
                     if (tpsc_opt == "yes")
                     {
-                        foreach (int score in leadearboard)
+                        for (int i =0; i <leadearboard.Count; i++)
                         {
-                            Console.WriteLine((leadearboard.IndexOf(score)+1)+". "+score+" guesses");
-                            
+                            Console.WriteLine(i+1+". " + leadearboard[i]+" guesses");
                         }
                     }
                 }
                 Console.WriteLine(" ");
                 Console.WriteLine("The number was " + num_str);
+                Console.WriteLine(" ");
                 Console.WriteLine("Do you want to play again: [yes/no]");
                 play_opt = Console.ReadLine().ToLower();
             }
